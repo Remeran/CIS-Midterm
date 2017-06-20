@@ -8,6 +8,8 @@ django:
     - ./:/var/djangoproject/
   links:
     - mysql
+  command: python library_system/manage.py makemigrations library
+  command: python library_system/manage.py migrate
   command: python library_system/manage.py runserver 0.0.0.0:8000
 mysql:
   image: mysql:8
