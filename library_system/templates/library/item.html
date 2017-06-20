@@ -1,0 +1,24 @@
+{% extends 'library/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	{{ item.title }}
+{% endblock %}
+
+{% block body_block %}
+		<h1>{{ item.title }}</h1>
+		<div>
+			<ul>
+				<li>Category: {{ item.category }}</li>
+				<li>Type: {{ item.type }}</li>
+			</ul>
+		</div>
+		<div>
+			{% if not item.checked_out %}
+				To check out this item click here: <a href="{% url 'check_out' item.slug %}">here</a>
+			{% else %}
+				Please note this item is checked out!
+				To check in this item in click here: <a href="{% url 'check_in' item.slug %}">here</a>
+			{% endif %}
+		</div>
+{% endblock %}

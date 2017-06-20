@@ -1,0 +1,19 @@
+{% extends 'library/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	index
+{% endblock %}
+
+{% block body_block %}
+	<h1>Digital Library</h1>
+	<div>
+		Welcome to the digital library system! What would you like to do?: <br />
+		<ul>
+			<li><a href="{% url 'browse' %}">Browse Selection</a></li>
+			<li><a href="{% url 'checked_out' %}">View checked out items</a></li>
+			<li><a href="{% url 'add_item' %}">Add item</a></li>
+			<li><a href="{% url 'add_user' %}">Add user</a></li>
+		</ul>
+	</div>
+{% endblock %}

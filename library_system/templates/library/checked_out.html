@@ -1,0 +1,37 @@
+{% extends 'library/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	checked out
+{% endblock %}
+
+{% block body_block %}
+	<h1>Digital Library</h1>
+	<div>
+		You are currently viewing checked out items. Click the item to check it back in: 
+	</div>
+	<div>
+		{% if items %}
+		<table style="width:100%">
+		<tr>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Type</th>
+			<th>Checked Out</th>
+			<th>By</th>
+		</tr>
+		{% for item in items %} 
+			<tr>
+				<th><a href="{% url 'show_item' item.slug %}">{{ item.title }}</a></th>
+				<th>{{ item.category }}</th>
+				<th>{{ item.type }}</th>
+				<th>{{ item.checked_out }}</th>
+				<th>{{ item.assigned_user }}</th>
+			</tr> 
+		{% endfor %} 
+		</table>
+		{% else %} 
+			<strong>There are no items present.</strong> 
+		{% endif %}
+	</div>
+{% endblock %}

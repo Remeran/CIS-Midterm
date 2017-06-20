@@ -1,0 +1,32 @@
+{% extends 'library/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Search Results
+{% endblock %}
+{% block body_block %}
+	<h1>Digital Library</h1>
+	<div>
+		<a href="{% url 'search' %}">Search</a>
+	</div>
+	<div>
+		{% if items %}
+		<table style="width:100%">
+		<tr>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Type</th>
+		</tr>
+		{% for item in items %} 
+			<tr>
+				<th>{{ item.title }}</th>
+				<th>{{ item.category }}</th>
+				<th>{{ item.type }}</th>
+			</tr> 
+		{% endfor %} 
+		</table>
+		{% else %} 
+			<strong>There are no items present.</strong> 
+		{% endif %}
+	</div>
+{% endblock %}
